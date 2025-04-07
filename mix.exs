@@ -8,7 +8,18 @@ defmodule TestPrivatePackage.MixProject do
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
       consolidate_protocols: Mix.env() != :dev,
+      package: package(),
       deps: deps()
+    ]
+  end
+
+  defp package do
+    [
+      name: :test_private_package,
+      organization: "igniter",
+      licenses: ["MIT"],
+      files: ~w(lib .formatter.exs mix.exs README* LICENSE*
+      CHANGELOG*)
     ]
   end
 
@@ -22,7 +33,8 @@ defmodule TestPrivatePackage.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:igniter, "~> 0.5", optional: true}
+      {:igniter, "~> 0.5", optional: true},
+      {:ex_doc, "~> 0.32", only: [:dev, :test], runtime: false},
    ]
   end
 end
