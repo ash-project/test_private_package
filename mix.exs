@@ -4,7 +4,7 @@ defmodule TestPrivatePackage.MixProject do
   def project do
     [
       app: :test_private_package,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
       consolidate_protocols: Mix.env() != :dev,
@@ -18,8 +18,8 @@ defmodule TestPrivatePackage.MixProject do
       name: :test_private_package,
       organization: "igniter",
       licenses: ["MIT"],
-      files: ~w(lib .formatter.exs mix.exs README* LICENSE*
-      CHANGELOG*)
+      files: ~w(lib .formatter.exs mix.exs README*),
+      extra: %{igniter: %{only: [:dev, :test]}}
     ]
   end
 
